@@ -20,12 +20,11 @@ public String leastEqualsPrefix(String s1 ,String s2){
 }
 
     public String longestCommonPrefix(String[] strs) {
-        String answer = strs[0];
-        for(int i=1; i <strs.length;i++){
-         answer =  leastEqualsPrefix(answer,strs[i]);
+        Arrays.sort(strs);
+        String firstString = strs[0];
+       String secondString = strs[strs.length-1];
+      return  leastEqualsPrefix(firstString,secondString);
         }
      
-      return answer;
-    }
 }
 

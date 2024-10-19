@@ -1,28 +1,36 @@
 class Solution {
-    public int minEatingSpeed(int[] piles, int h) {
-        int right= Arrays.stream(piles).max().getAsInt();
-        int left = 1;
-        while(left<right){
-      int mid =  left +(right-left)/2;
-      if(canFinish(piles,h,mid)){
-        right=mid;
-      }
-      else 
-       left = mid+1; 
+        public static long numberOfHours(int[] bananas,int rate ){
+        long numOfHours=0;
+        for(int i =0; i<bananas.length;i++){
+            int  remainder = bananas[i]%rate;
+            int  quotent = bananas[i]/rate;
+            if(remainder==0){
+                numOfHours=numOfHours+quotent;
+            }
+            else{
 
+                numOfHours=numOfHours+quotent+1;
+            }
         }
-        return left;
-
+        return  numOfHours;
 
     }
+    public int minEatingSpeed(int[] piles, int h) {
+        int maxele = Arrays.stream(piles).max().getAsInt();
+        int left = 1;
+        int right = maxele;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            long hh = numberOfHours(piles, mid);
+            if (hh <= h) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
 
-    public boolean canFinish(int [] piles, int h,int k){
-         int hoursneeded=0;
-        for(int pile : piles){
-             hoursneeded +=( pile + k - 1)/k;
+            }
 
-      }
-      return hoursneeded<=h;
+        }
 
+        return left;
     }
 }

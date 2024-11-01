@@ -3,15 +3,13 @@ class Solution {
         int rows= text1.length();
         int columns = text2.length();
         int [][] dp = new int [rows+1][columns+1];
-        for(int i = 0; i <columns+1;i++){
-                    dp[0][i]=0;
-        }
-        for(int j = 0; j <rows+1;j++){
-                    dp[j][0]=0;
-        }
-        for(int i=1; i <text1.length()+1;i++){
-            for(int j =1; j <text2.length()+1;j++){
-                if(text1.charAt(i-1)==text2.charAt(j-1)){
+
+        for(int i=0; i <text1.length()+1;i++){
+            for(int j =0; j <text2.length()+1;j++){
+                if(i==0 || j==0){
+                    dp[i][j]=0;
+                }
+             else if(text1.charAt(i-1)==text2.charAt(j-1)){
                     dp[i][j]= dp[i-1][j-1]+1;
 
                 }

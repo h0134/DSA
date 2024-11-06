@@ -13,7 +13,12 @@ class Solution {
 
          for(int i=1; i<nrows;i++){
         for(int j=1; j<ncoln;j++){
-            grid[i][j]=Math.min(grid[i][j]+grid[i-1][j],grid[i][j]+grid[i][j-1]);}
+            int currentElement =grid[i][j];
+
+            grid[i][j]=Math.min(grid[i-1][j],grid[i][j-1]);
+             grid[i][j]=grid[i][j]+currentElement;
+
+            }
         
     }
 return grid[nrows-1][ncoln-1];

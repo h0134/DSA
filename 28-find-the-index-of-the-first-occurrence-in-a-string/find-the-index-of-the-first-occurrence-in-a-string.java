@@ -1,24 +1,25 @@
 class Solution {
     public int strStr(String haystack, String needle) {
-       int  left =0;
-       int  right=0;   int m = haystack.length(); int n = needle.length();
-        while(left<m && right<n){
+        int n = haystack.length();
+        int m = needle.length();
+        int left =0;
+        int right =0;
+        while(left<n && right<m){
             if(haystack.charAt(left)!=needle.charAt(right)){
-                left++;
-                left=left-right;
-                right=0;
+               left=left-right+1;
+             right=0;
+
             }
-            else{
-       
-           left++;
-           right++;
-           if(right==n){
-                return  left-right;  
-           }
-        }  
+         else  if(haystack.charAt(left)==needle.charAt(right)){
+                left++;
+                right++;
+            if(right==m){
+                return left-m;
+            }
+
+            }
         }
         return -1;
         
     }
-
 }

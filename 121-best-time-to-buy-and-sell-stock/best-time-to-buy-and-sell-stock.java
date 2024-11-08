@@ -7,9 +7,9 @@ class Solution {
 
             int sell = prices[i];
             int profit =sell-buy;
-            if(profit>0){
+          
                 maxProfit=Math.max(profit,maxProfit);
-            }
+        
             buy=Math.min(sell,buy);
 
         }

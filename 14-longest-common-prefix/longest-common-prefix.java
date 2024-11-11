@@ -1,27 +1,29 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
         Arrays.sort(strs);
-        int n = strs.length;
-        String firstWord= strs[0];
-        String lastWord= strs[n-1];
-     String common=  commonPrefix(firstWord,lastWord);
-     return common;
+        String firstWord = strs[0];
+        System.out.println(firstWord);
 
-        
-    }
+        String secondWord = strs [strs.length-1];
+                System.out.println(secondWord);
 
-    public String commonPrefix(String s1,String s2){
-        String commonPrefix="";
-        int m = s1.length();
-        int n = s2.length();
-        int minlength = Math.min(m,n);
-        for(int i=0; i <minlength;i++){
-            if(s1.charAt(i)==s2.charAt(i)){
-                commonPrefix =commonPrefix+s1.charAt(i);
-                }
-                else{
-break;                }
+        int left =0;
+        int right=0;
+    
+       StringBuilder str = new StringBuilder();
+
+       
+        while(left<firstWord.length() && right<secondWord.length()){
+            if(firstWord.charAt(left)==secondWord.charAt(right)){
+                str.append(firstWord.charAt(left));
+            }
+            else{
+                return str.toString();
+            }
+      
+            left++;
+            right++;
         }
-        return commonPrefix;
+        return str.toString();
     }
 }

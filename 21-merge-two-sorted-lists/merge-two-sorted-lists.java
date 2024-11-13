@@ -37,13 +37,13 @@ list1=list1.next;
   while(list1!=null && list2!=null){
     if(list1.val>list2.val){
         head2.next=list2;
-        head2=head2.next;
+        head2=list2;
         list2=list2.next;
 
     }
     else if(list1.val<=list2.val){
         head2.next=list1;
-        head2=head2.next;
+        head2=list1;
         list1=list1.next;
 
     }

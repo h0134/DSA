@@ -1,46 +1,38 @@
 class Solution {
-      int longestConsecutive(int[] nums) {
-        HashSet<Integer> myhash= new HashSet<>();
+    public int longestConsecutive(int[] nums) {
+        HashSet<Integer> myhash = new HashSet<>();
+        if(nums.length<1){
+            return 0;
+        }
+        
         for(int num :nums){
             myhash.add(num);
         }
-                    int longestLength =Integer.MIN_VALUE;
+        int maxCount =1;
+        for(int i=0;i<nums.length;i++){
+          int count=1;
+
+           int temp =nums[i]+1;
+           if(myhash.contains(nums[i])){
+             while(myhash.contains(temp)){
+                  myhash. remove(temp);
+                    count++;
 
 
+            temp=temp+1;
+           }
+            temp = nums[i]-1;
+ while(myhash.contains(temp)){
+    myhash.remove(temp);
+          count++;
 
-        for(int i = 0 ; i <nums.length; i++){
-            int ele = nums[i]-1;
-            int tele = nums[i]+1;
-                                               int count =1;
-
-
-            if(myhash.contains(nums[i])){
-
-                while(myhash.contains(ele)){
-            count=count+1;
-              myhash.remove(ele);
-
-            ele = ele-1;
-
-            }
-       while(myhash.contains(tele)){
-            count=count+1;
-             myhash.remove(tele);
-
-            tele = tele+1;
-            }
-
-            }
-           
-          myhash.remove(nums[i]);
-
-      longestLength=Math.max(longestLength,count);
-
+            temp=temp-1;
+           }
+           }
+           maxCount=Math.max(maxCount,count);
+myhash.remove(nums[i]);
+      
         }
-
-        return longestLength>0?longestLength:0;
-
-
-        
+        return maxCount;
     }
 }

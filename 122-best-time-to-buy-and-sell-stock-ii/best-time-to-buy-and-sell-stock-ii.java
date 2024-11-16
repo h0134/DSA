@@ -1,27 +1,20 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int i=0;
-        int n=prices.length;
-        int maxProfit=0;
-        while(i<n-1){
-            
-          
-        while(i<n-1 && prices[i]>=prices[i+1]){
-            
-            i++;
-        }
-        int buy = prices[i];
+    
+    int n = prices.length;
+    int [] profit = new int [n];
 
-        while(i<n-1 && prices[i]<=prices[i+1]){
-            i++;
-        }
-        int sell = prices[i];
-        maxProfit += sell-buy;
-        
-        }
-        return maxProfit;
+    int maxProfit =Integer.MIN_VALUE;
+    profit[0]=0;
+       maxProfit=Math.max(maxProfit, profit[0]);
 
-       
+    for(int i=1;i<n;i++){
+        profit[i]=prices[i]-prices[i-1]+maxProfit;
+        maxProfit=Math.max( profit[i],maxProfit);
+    }
+
+       return maxProfit;
+
     }
 }
 

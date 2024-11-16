@@ -12,8 +12,8 @@ class Solution {
 
         for(int i=1;i<rows;i++){
             for(int j =1; j <cols;j++){
-               
-                grid[i][j]=Math.min(grid[i][j]+grid[i-1][j],grid[i][j]+grid[i][j-1]);
+              
+                grid[i][j]= grid[i][j]+Math.min(grid[i-1][j],grid[i][j-1]);
             }
         }
         return grid[rows-1][cols-1];

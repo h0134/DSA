@@ -1,41 +1,46 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        int floor = getFloor(matrix,target);
-        int left = 0;
-        int right =matrix[0].length-1;
-        while(left<=right){
-            int middleIndex = (left+right)/2;
-            int middleElement = matrix[floor][middleIndex];
-            if(target<middleElement){
-                right = middleIndex-1;
-            }
-                if(target>middleElement){
-                left = middleIndex+1;
-            }    if(target==middleElement){
-               return true;
-            }
-        }
-        return false;
-    }
-    public int getFloor(int[][] matrix, int target){
         int rows = matrix.length;
-        int columns = matrix[0].length;
-        int left = 0;
-        int right = matrix.length-1;
+        int cols = matrix[0].length;
+        int left =0;
+        int right=rows-1;
+        int floor=-1;
         while(left<=right){
-            int middleIndex = (left+right)/2;
-            int middleElement = matrix[middleIndex][0];
-            if(target<middleElement){
-                right = middleIndex-1;
+           int  mid=(left+right)/2;
+            if(target==matrix[mid][0]){
+                floor=mid;
+                break;
             }
-                if(target>middleElement){
-                left = middleIndex+1;
-            }    if(target==middleElement){
-               return middleIndex;
+            else if(target>matrix[mid][0]){
+                left=mid+1;
             }
+            else if(target<matrix[mid][0]){
+                right=mid-1;
+            }}
+            if(floor==-1){
 
-        }
-        
-        return left==0?0:left-1;
+                floor= left-1;
+                
+                }
+                System.out.println(floor);
+   if(floor<0){
+    floor =0;
+   }
+           left =0;
+           right = cols-1;
+           while(left<=right){
+            int mid = (left+right)/2;
+            if(target ==matrix[floor][mid]){
+                return true;
+
+            }
+            else if (target>matrix[floor][mid]){
+                left=mid+1;
+            }
+              else if (target<matrix[floor][mid]){
+                right=mid-1;
+            }
+           }
+           return false;      
     }
 }

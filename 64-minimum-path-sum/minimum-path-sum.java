@@ -1,27 +1,21 @@
 class Solution {
     public int minPathSum(int[][] grid) {
-        int nrows = grid.length;
-        int ncoln = grid[0].length;
-        for(int i=1; i<ncoln;i++){
-            grid[0][i]=grid[0][i-1]+grid[0][i];
-
-        }
-         for(int i=1; i<nrows;i++){
-            grid[i][0]=grid[i-1][0]+grid[i][0];
-
+        int rows= grid.length;
+        int cols= grid[0].length;
+        for(int i =1;i<cols;i++){
+            grid[0][i]= grid[0][i]+ grid[0][i-1];
         }
 
-         for(int i=1; i<nrows;i++){
-        for(int j=1; j<ncoln;j++){
-            int currentElement =grid[i][j];
+       for(int j =1;j<rows;j++){
+            grid[j][0]= grid[j][0]+ grid[j-1][0];
+        }
 
-            grid[i][j]=Math.min(grid[i-1][j],grid[i][j-1]);
-             grid[i][j]=grid[i][j]+currentElement;
-
+        for(int i=1;i<rows;i++){
+            for(int j =1; j <cols;j++){
+               
+                grid[i][j]=Math.min(grid[i][j]+grid[i-1][j],grid[i][j]+grid[i][j-1]);
             }
-        
+        }
+        return grid[rows-1][cols-1];
     }
-return grid[nrows-1][ncoln-1];
-}
-
 }

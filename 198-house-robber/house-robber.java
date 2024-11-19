@@ -2,7 +2,7 @@ class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
         int [] dp = new int [n+1];
-        if(nums.length==1)    return nums[0];
+        if(nums.length==1)  return nums[0];
         if(nums.length==0) return 0;
 
         dp[0]=nums[0];
@@ -16,3 +16,4 @@ class Solution {
         
     }
 }
+

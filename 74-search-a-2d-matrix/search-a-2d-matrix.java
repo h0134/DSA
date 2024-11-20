@@ -5,6 +5,7 @@ class Solution {
         int left=0;
         int right=nrows-1;
         int floor =-1;
+      
     while(left<=right){
         int mid =(left+right)/2;
 
@@ -25,10 +26,10 @@ class Solution {
     floor=left-1;
 
  }
- if(floor==-1){
+  if(floor==-1){
     floor=0;
- }
 
+ }
      left=0;
      right=ncols-1;
 

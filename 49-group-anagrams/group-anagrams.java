@@ -1,30 +1,35 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> result= new ArrayList<>();
-        HashMap<String , List<String>> mymap = new HashMap<>();
+        Map<String,List<String>> mymap = new HashMap<>();
+        for(String s : strs){
+         String sortedWord= sortWord(s);
+         if(!mymap.containsKey(sortedWord)){
+            List<String> res=new ArrayList<>();;
+            res.add(s);
+            mymap.put(sortedWord,res);
+          }
+          else{
+            List<String> val = mymap.get(sortedWord);
+            val.add(s);
+            mymap.put(sortedWord,val);
+  }
+ }
 
-for(String word: strs){
-            char[] charArr= word.toCharArray();
-            Arrays.sort(charArr);
-            String sg= new String(charArr);
-            if(!mymap.containsKey(sg)){
-            List<String> re= new ArrayList<>();
-            re.add(word);
-            mymap.put(sg,re);
-            }
-            else{
-                mymap.get(sg).add(word);
-            }
-        }
-for(Map.Entry<String,List<String>> entry: mymap.entrySet()){
-  List<String> arr =  entry.getValue();
-  result.add(arr);
-
+List<List<String>> result = new ArrayList<>();
+for(Map.Entry<String ,List<String>> entry : mymap.entrySet() ){
+List<String> res= entry.getValue();
+result.add(res);
 }
 return result;
 
     }
 
+    public String sortWord(String str){
+        char[] charA=str.toCharArray();
+        Arrays.sort(charA);
+       String s = new String(charA);
+       return s;
 
 
+    }
 }
